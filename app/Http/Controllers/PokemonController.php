@@ -10,6 +10,12 @@ class PokemonController extends Controller
     {
         $this->middleware('auth')->except('show');
     }
+    public function show($id)
+
+    {
+        $pokemon = Pokemon::findOrFail($id);
+        return view('pokemon.show', compact('pokemon'));
+    }
 
     public function index()
     {
