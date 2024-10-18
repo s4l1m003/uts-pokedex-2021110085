@@ -10199,7 +10199,9 @@ class PokemonTableSeeder extends Seeder
                 'photo' => 'public/magearna.png',
             ),
         ));
-
+        $this->call([
+            PokemonTableSeeder::class,
+        ]);
 
     }
 }

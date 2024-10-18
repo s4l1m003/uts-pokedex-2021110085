@@ -12,3 +12,4 @@ public function run()
     $this->call(PokemonTableSeeder::class);
 }
 
+}
