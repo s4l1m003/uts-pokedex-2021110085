@@ -70,11 +70,20 @@
                 <label class="form-check-label" for="is_legendary">Is Legendary</label>
             </div>
 
-            <div class="mb-3">
-                <label for="photo" class="form-label">Photo</label>
-                <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
-                <img src="{{ asset('storage/' . $pokemon->photo) }}" alt="Pokemon Photo" class="img-thumbnail mt-3" style="max-height: 150px;">
-            </div>
+<div class="mb-3">
+    <label for="name" class="form-label">Pokémon Name</label>
+    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') ?? $pokemon->name ?? '' }}" required>
+</div>
+
+<div class="mb-3">
+    <label for="primary_type" class="form-label">Primary Type</label>
+    <select class="form-select" id="primary_type" name="primary_type" required>
+        <option value="">Choose Type</option>
+        @foreach ($types as $type)
+            <option value="{{ $type }}" {{ (old('primary_type') ?? $pokemon->primary_type ?? '') == $type ? 'selected' : '' }}>{{ $type }}</option>
+        @endforeach
+    </select>
+</div>
 
             <button type="submit" class="btn btn-primary">Update Pokémon</button>
         </form>

@@ -66,11 +66,20 @@
                 <input class="form-check-input" type="checkbox" id="is_legendary" name="is_legendary" {{ old('is_legendary') ? 'checked' : '' }}>
                 <label class="form-check-label" for="is_legendary">Is Legendary</label>
             </div>
+<div class="mb-3">
+    <label for="name" class="form-label">Pokémon Name</label>
+    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') ?? $pokemon->name ?? '' }}" required>
+</div>
 
-            <div class="mb-3">
-                <label for="photo" class="form-label">Photo</label>
-                <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
-            </div>
+<div class="mb-3">
+    <label for="primary_type" class="form-label">Primary Type</label>
+    <select class="form-select" id="primary_type" name="primary_type" required>
+        <option value="">Choose Type</option>
+        @foreach ($types as $type)
+            <option value="{{ $type }}" {{ (old('primary_type') ?? $pokemon->primary_type ?? '') == $type ? 'selected' : '' }}>{{ $type }}</option>
+        @endforeach
+    </select>
+</div>
 
             <button type="submit" class="btn btn-primary">Add Pokémon</button>
         </form>
